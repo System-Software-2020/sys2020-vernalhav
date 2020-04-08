@@ -11,15 +11,15 @@ CFLAGS=-S
 LDFLAGS=-L
 
 
-preprocess: $(BIN)
+preprocess: $(TARGET)
 	cpp $(CPPFLAGS) $(TARGET) -o $(CPP_OUT)
 
 
-assembly: preprocess
+assembly: $(CPP_OUT)
 	gcc $(CFLAGS) $(CPP_OUT) -o $(CC_OUT)
 
 
-link: assembly
+link: $(CC_OUT) $(LIBS)
 	ld $(LDFLAGS) $(CC_OUT) $(LIBS) -o $(LD_OUT)
 
 
