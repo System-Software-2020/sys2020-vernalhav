@@ -8,9 +8,9 @@ LD_OUT=bin
 
 
 CPPFLAGS=
-CFLAGS=-S
-ASM_FLAGS=
-LDFLAGS=-s -L. -r
+CFLAGS=-S -fno-pie -fno-pic	# Flags for gcc when going from preprocessed to assembly
+ASM_FLAGS=-fno-pie -fno-pic # Flags for gcc when going from assembly to object
+LDFLAGS=-L.
 
 
 $(CPP_OUT): $(TARGET)
