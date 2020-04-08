@@ -45,3 +45,4 @@ main001_p.c
 *.S
 bin
 .Makefile.swp
+*.o

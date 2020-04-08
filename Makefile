@@ -1,5 +1,5 @@
 TARGET=main001.c
-LIBS=libfoo.a
+LIB=libfoo.a
 
 CPP_OUT=main001_p.c
 CC_OUT=main001.S
@@ -9,7 +9,7 @@ LD_OUT=bin
 
 CPPFLAGS=
 CFLAGS=-S
-ASM_FLAGS=-march=x86-64
+ASM_FLAGS=
 LDFLAGS=-s -L. -r
 
 
@@ -22,11 +22,11 @@ $(CC_OUT): $(CPP_OUT)
 
 
 $(ASM_OUT): $(CC_OUT)
-	gcc $(ASM_FLAGS) $(CC_OUT) -c -o $(ASM_OUT)
+	gcc $(ASM_FLAGS) $(CC_OUT) -c
 
 
-$(LD_OUT): $(ASM_OUT) $(LIBS)
-	ld $(LDFLAGS) $(ASM_OUT) $(LIBS) -o $(LD_OUT)
+$(LD_OUT): $(ASM_OUT)
+	ld $(LDFLAGS) $(ASM_OUT) $(LIB) -o $(LD_OUT)
 
 
 .PHONY: all clean preprocess compile assemble link
